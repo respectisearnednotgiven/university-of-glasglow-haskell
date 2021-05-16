@@ -47,3 +47,12 @@ hello animal =
         Fish -> "bubble"
         Parrot name -> "pretty " ++ name
 
+-- find the max value in the Int list
+
+maxHelper :: Int -> [Int] -> Int
+maxHelper = foldl (\ x y -> if x > y then x else y)
+
+maxFromList :: [Int] -> Maybe Int
+maxFromList [] = Nothing
+maxFromList (x:xs) = Just (maxHelper x xs) -- just is used to wrap this inside the Maybe
+
