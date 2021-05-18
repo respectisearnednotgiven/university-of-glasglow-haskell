@@ -4,7 +4,7 @@ journeyCost miles fuelCostPerLitre =
     let milesPerGallon = 35
         litresPerGallon = 4.55
         gallons = miles / milesPerGallon
-    in (gallons * litresPerGallon * fuelCostPerLitre)
+    in (gallons * litresPerGallon * fuelCostPerLitre) -- our return value
 
 -- using where
 squarePlusOne :: Int -> Int
@@ -55,4 +55,15 @@ maxHelper = foldl (\ x y -> if x > y then x else y)
 maxFromList :: [Int] -> Maybe Int
 maxFromList [] = Nothing
 maxFromList (x:xs) = Just (maxHelper x xs) -- just is used to wrap this inside the Maybe
+
+-- quick primer on monads
+-- syntactic features of a monad: do keyword, seq of commands, way to extract info from a monadic computation using the left arrow <-
+-- and the return keyword
+
+hello' :: String -> IO String
+hello' x =
+    do
+        putStrLn ("Hello, " ++ x)
+        putStrLn "What's your name?"
+        getLine
 
